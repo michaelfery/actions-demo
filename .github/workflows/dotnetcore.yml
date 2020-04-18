@@ -31,7 +31,7 @@ jobs:
     
     steps:
     - name: Publish
-      run: dotnet publish webapp/ --configuration Release --no-restore
+      run: dotnet publish webapp/ --configuration Release
     - name: Publish artifact
       uses: actions/upload-artifact@master
       with:
