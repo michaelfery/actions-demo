@@ -25,3 +25,8 @@ jobs:
       run: dotnet test *.Tests/*.csproj
     - name: Publish
       run: dotnet publish webapp/ --configuration Release --no-restore
+    - name: Publish artifact
+      uses: actions/upload-artifact@master
+      with:
+        name: webapp
+        path: webapp/bin/Release/netcoreapp3.1/publish
