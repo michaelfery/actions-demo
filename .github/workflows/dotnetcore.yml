@@ -1,6 +1,8 @@
 name: .NET Core
 
 on:
+  push:
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -21,3 +23,11 @@ jobs:
       run: dotnet build webapp/ --configuration Release --no-restore
     - name: Test
       run: dotnet test *.Tests/*.csproj
+      
+  package:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Publish
+      run: dotnet publish webapp/ --configuration Release --no-restore
