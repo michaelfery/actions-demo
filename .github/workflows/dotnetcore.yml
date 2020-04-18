@@ -23,15 +23,8 @@ jobs:
       run: dotnet build webapp/ --configuration Release --no-restore
     - name: Test
       run: dotnet test *.Tests/*.csproj
-      
-  publish:
-
-    runs-on: ubuntu-latest
-    needs: build
-    
-    steps:
     - name: Publish
-      run: dotnet publish webapp/*.csproj --configuration Release
+      run: dotnet publish webapp/ --configuration Release
     - name: Publish artifact
       uses: actions/upload-artifact@master
       with:
