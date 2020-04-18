@@ -1,8 +1,6 @@
 name: .NET Core
 
 on:
-  push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -21,3 +19,5 @@ jobs:
       run: dotnet restore webapp/
     - name: Build
       run: dotnet build webapp/ --configuration Release --no-restore
+    - name: Test
+      run: dotnet test *.Tests/*.csproj
