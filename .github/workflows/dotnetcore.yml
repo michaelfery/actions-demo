@@ -24,8 +24,10 @@ jobs:
     - name: Test
       run: dotnet test *.Tests/*.csproj
     - name: Publish
+      if: github.ref == 'refs/heads/master'
       run: dotnet publish webapp/ --configuration Release --no-restore
     - name: Publish artifact
+      if: github.ref == 'refs/heads/master'
       uses: actions/upload-artifact@master
       with:
         name: webapp
