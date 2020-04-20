@@ -43,3 +43,13 @@ jobs:
         uses: actions/download-artifact@master
         with:
           name: webapp
+      # set up az cli login
+      - uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      # deploy web app using Azure credentials
+      - name: 'Azure webapp deploy'
+        uses: azure/webapps-deploy@v1
+        with:
+          app-name: 'actions-demo-app'
+          package: 'webapp'
